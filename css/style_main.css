@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Edu AU VIC WA NT Pre';
+}
+
+body{
+    background: #ffe0f5;
+}
+
+.main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main h1{
+    text-align: center;
+    margin-top: -100px;
+}
+
+#catflower{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#catflower1{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#catsweating{
+    width: 250px;
+    position: absolute;
+    bottom: 100px;
+}
+
+.button_pierwszy{
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.274);
+    border-radius: 15px;
+    font-size: 20px;
+    border: 1px solid grey;
+    margin-top: 50px;
+}
+
+.button_pierwszy:active{
+    background-color: antiquewhite;
+}
+
+.hidden {
+    display: none;
+}
+.visible {
+    display: block;
+}
+
+
+.photo_gallery{
+    display: flex;
+    text-align: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    width: 1200px;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.photo_gallery #rozciagnij{
+    width: 240px;
+    height: 210px;
+    object-fit: cover;
+}
+
+.maczek, .spacer, .kino, .kregle, .golf{
+    padding: 15px;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.main_jedzenie{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main_jedzenie h1{
+    text-align: c
+}
+
+.main_koniec{
+    display: flex;
+    font-size: 70px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(90deg, #ff6347, #20b2aa);
+    background-size: 200% 100%;
+    background-clip: text;
+    text-fill-color: transparent;
+    animation: waveColor 4s infinite; 
+}
+
+.main_kalendarz{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+    text-align: center;
+    
+}
+
+.main_kalendarz input{
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main_kalendarz button{
+    width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main_kalendarz h1{
+    margin-top: 200px;
+    margin-bottom: 50px;
+}
+
+
+.data, #confirmDate{
+    border-radius: 8px;
+    border: 1px solid pink;
+    padding: 5px;
+}
+
+#confirmDate{
+    background: rgba(255, 255, 255, 0.623);
+}
+
+
+
+@keyframes waveColor {
+    0% {
+      color: rgb(186, 134, 255);
+      background-position: 100% 0;
+    }
+    50% {
+      color: #ff6464; /* Kolor w połowie animacji, np. pomarańczowy */
+      background-position: 0 0;
+    }
+    100% {
+      color: #ff94ed; /* Końcowy kolor, np. morski */
+      background-position: 100% 0;
+    }
+  }
+  

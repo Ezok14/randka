@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wybór jedzenia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style_main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <main class="main_jedzenie">
+        <h1>Gdzie idziemy??</h1>
+        <div class="photo_gallery">
+            <div class="maczek">
+                <img src="../assets/mcd.png" alt="maczek">
+                <p>MACZEK?</p>
+            </div>
+            <div class="spacer">
+                <img src="../assets/park.jpg" alt="spacer" id="rozciagnij">
+                <p>SPACEREK?</p>
+            </div>
+            <div class="kino">
+                <img src="../assets/kino.jpg" alt="kino" id="rozciagnij">
+                <p>FILM?</p>
+            </div>
+            <div class="kregle">
+                <img src="../assets/kregle.jpg" alt="kregle" id="rozciagnij">
+                <p>KRĘGLE?</p>
+            </div>
+            <div class="golf">
+                <img src="../assets/golf.webp" alt="golf" id="rozciagnij">
+                <p>GOLF?</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const divs = document.querySelectorAll('.photo_gallery > div');
+            let isOptionSelected = false;
+            let selectedFood = '';
+
+            divs.forEach(div => {
+                div.addEventListener('click', function() {
+                    if (isOptionSelected) return;
+
+
+                    isOptionSelected = true;
+                    div.style.border = '2px solid pink';
+                    selectedFood = div.querySelector('p').innerText;
+                    
+
+                    localStorage.setItem('selectedFood', selectedFood);
+
+                    const selectedDate = localStorage.getItem('selectedDate');
+
+
+                    if (selectedDate && selectedFood) {
+                        const webhookUrl = 'https://discord.com/api/webhooks/1332703942337106002/EXs90bc9J1pa_9F8v6wFRe1evvOd_KAGVWncGhz0H5lWEJxBRRrYp1vBPVTsTPvEAM9l';
+                        fetch(webhookUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                content: `Panna zdecydowała:\nData: ${selectedDate}\nMiejsce spotkania: ${selectedFood}`
+                            })
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log('Wiadomość została wysłana.');
+                                setTimeout(function() {
+                                    window.location.href = 'koncowka.html'; 
+                                }, 2000);
+                            } else {
+                                console.error('Błąd przy wysyłaniu wiadomości.');
+                            }
+                        })
+                        .catch(error => console.error('Błąd:', error));
+                    } else {
+                        console.log('Brak wybranej daty lub jedzenia.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

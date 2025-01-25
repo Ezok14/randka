@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wybór daty i godziny</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style_main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <main class="main_kalendarz">
+        <h1>Wybierz datę i godzinę</h1>
+        <input type="datetime-local" id="calendar" name="calendar" class="data">
+        <br>
+        <button type="button" id="confirmDate">Wtedy mogę!</button>
+    </main>
+
+    <script>
+        document.getElementById('confirmDate').addEventListener('click', function() {
+            const selectedDate = document.getElementById('calendar').value;
+            if (selectedDate) {
+                localStorage.setItem('selectedDate', selectedDate);
+
+                window.location.href = 'wybor_jedzenia.html';
+            } else {
+                alert('Proszę wybrać datę i godzinę!');
+            }
+        });
+    </script>
+</body>
+</html>
