@@ -166,3 +166,52 @@ body{
     }
   }
   
+/* Dostosowanie do ekranów mniejszych niż 768px */
+@media (max-width: 768px) {
+    .main {
+        height: auto; /* Elastyczna wysokość */
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .main h1 {
+        font-size: 1.5em; /* Mniejsza czcionka */
+        margin-top: 10px;
+    }
+
+    #catflower, #catflower1, #catsweating {
+        position: static; /* Usuń absolutne pozycjonowanie na małych ekranach */
+        margin: 10px auto; /* Wycentrowanie */
+        max-width: 90%; /* Dopasowanie obrazków do ekranu */
+        height: auto;
+    }
+
+    .button_pierwszy {
+        width: 80%; /* Zmniejsz szerokość przycisku */
+        font-size: 18px;
+    }
+
+    .photo_gallery {
+        width: 100%; /* Galeria zdjęć w pełnej szerokości */
+        gap: 20px; /* Mniejszy odstęp */
+    }
+
+    .photo_gallery div {
+        flex: 1 1 45%; /* Elementy w dwóch kolumnach */
+    }
+}
+
+/* Dostosowanie do ekranów mniejszych niż 480px */
+@media (max-width: 480px) {
+    .main h1 {
+        font-size: 1.2em; /* Jeszcze mniejsza czcionka */
+    }
+
+    .button_pierwszy {
+        font-size: 16px; /* Dostosowanie tekstu przycisku */
+    }
+
+    #catflower, #catflower1, #catsweating {
+        max-width: 100%;
+    }
+}
