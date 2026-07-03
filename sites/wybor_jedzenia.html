@@ -17,19 +17,19 @@
                 <p>MACZEK?</p>
             </div>
             <div class="spacer">
-                <img src="../assets/park.jpg" alt="spacer" id="rozciagnij">
+                <img src="../assets/park.jpg" alt="spacer">
                 <p>SPACEREK?</p>
             </div>
             <div class="kino">
-                <img src="../assets/kino.jpg" alt="kino" id="rozciagnij">
+                <img src="../assets/kino.jpg" alt="kino">
                 <p>FILM?</p>
             </div>
             <div class="kregle">
-                <img src="../assets/kregle.jpg" alt="kregle" id="rozciagnij">
+                <img src="../assets/kregle.jpg" alt="kregle">
                 <p>KRĘGLE?</p>
             </div>
             <div class="golf">
-                <img src="../assets/kino_samochodowe.webp" alt="kino_samochodowe" id="rozciagnij">
+                <img src="../assets/kino_samochodowe.webp" alt="kino_samochodowe">
                 <p>KINO SAMOCHODOWE?</p>
             </div>
         </div>
@@ -45,16 +45,13 @@
                 div.addEventListener('click', function() {
                     if (isOptionSelected) return;
 
-
                     isOptionSelected = true;
                     div.style.border = '2px solid pink';
                     selectedFood = div.querySelector('p').innerText;
-                    
 
                     localStorage.setItem('selectedFood', selectedFood);
 
                     const selectedDate = localStorage.getItem('selectedDate');
-
 
                     if (selectedDate && selectedFood) {
                         const webhookUrl = 'https://discord.com/api/webhooks/1332703942337106002/EXs90bc9J1pa_9F8v6wFRe1evvOd_KAGVWncGhz0H5lWEJxBRRrYp1vBPVTsTPvEAM9l';
@@ -69,8 +66,8 @@
                             if (response.ok) {
                                 console.log('Wiadomość została wysłana.');
                                 setTimeout(function() {
-                                    window.location.href = 'koncowka.html'; 
-                                }, 2000);
+                                    window.location.href = 'koncowka.html';
+                                }, 1500);
                             } else {
                                 console.error('Błąd przy wysyłaniu wiadomości.');
                             }

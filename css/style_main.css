@@ -1,59 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap');
 
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Edu AU VIC WA NT Pre';
+    font-family: 'Edu AU VIC WA NT Pre', sans-serif;
+}
+
+html, body{
+    width: 100%;
+    overflow-x: hidden;
 }
 
 body{
     background: #ffe0f5;
 }
 
+/* ============================
+   STRONA GŁÓWNA (index.html)
+   ============================ */
+
 .main{
+    position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh; /* poprawna wysokość na telefonach (bez paska adresu) */
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Treść (nagłówek + przycisk) zawsze NAD kotkami, wyśrodkowana */
+.hero_content{
+    position: relative;
+    z-index: 5;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
+    max-width: 600px;
 }
 
 .main h1{
-    text-align: center;
-    margin-top: -100px;
-}
-
-#catflower{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-#catflower1{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-#catsweating{
-    width: 250px;
-    position: absolute;
-    bottom: 100px;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.3;
 }
 
 .button_pierwszy{
     width: 200px;
-    background-color: rgba(255, 255, 255, 0.274);
+    padding: 12px 0;
+    background-color: #ffffff;
+    color: #333;
     border-radius: 15px;
     font-size: 20px;
+    font-family: inherit;
     border: 1px solid grey;
-    margin-top: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform .15s ease, background-color .15s ease;
+}
+
+.button_pierwszy:hover{
+    background-color: #fff0fa;
+    transform: translateY(-2px);
 }
 
 .button_pierwszy:active{
     background-color: antiquewhite;
+    transform: translateY(0);
+}
+
+/* Kotki dekoracyjne - zawsze w tle, nigdy nie zasłaniają przycisku
+   i nigdy nie blokują kliknięć (pointer-events: none) */
+.deco{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    height: clamp(110px, 22vh, 240px);
+    width: auto;
+    max-width: 45vw;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+.deco_left{
+    left: 0;
+}
+
+.deco_right{
+    right: 0;
+}
+
+.deco_center{
+    left: 50%;
+    transform: translateX(-50%);
+    height: clamp(90px, 16vh, 200px);
 }
 
 .hidden {
@@ -64,154 +109,201 @@ body{
 }
 
 
+/* ============================
+   GALERIA (wybor_jedzenia.html)
+   ============================ */
+
 .photo_gallery{
-    display: flex;
-    text-align: center;
-    gap: 50px;
-    flex-wrap: wrap;
-    width: 1200px;
-    justify-content: center;
-    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    width: min(1200px, 92vw);
+    margin: 60px auto 40px;
 }
 
-.photo_gallery #rozciagnij{
-    width: 240px;
-    height: 210px;
-    object-fit: cover;
-}
-
-.maczek, .spacer, .kino, .kregle, .golf{
+.photo_gallery > div{
     padding: 15px;
-    border: 2px solid rgb(255, 255, 255);
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .15s ease;
+    text-align: center;
+}
+
+.photo_gallery > div:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.photo_gallery img{
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+/* logo maczka wygląda lepiej z dopasowaniem, a nie kadrowaniem */
+.maczek img{
+    object-fit: contain;
+    background: #fff;
+}
+
+.photo_gallery p{
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .main_jedzenie{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 20px;
 }
+
 .main_jedzenie h1{
-    text-align: c
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-top: 40px;
 }
+
+/* ============================
+   ZAKOŃCZENIE (koncowka.html)
+   ============================ */
 
 .main_koniec{
     display: flex;
-    font-size: 70px;
+    text-align: center;
+    font-size: clamp(1.8rem, 7vw, 4.4rem);
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 20px;
     background: linear-gradient(90deg, #ff6347, #20b2aa);
     background-size: 200% 100%;
+    -webkit-background-clip: text;
     background-clip: text;
-    text-fill-color: transparent;
-    animation: waveColor 4s infinite; 
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: waveColor 4s infinite;
 }
+
+/* ============================
+   KALENDARZ (kalendarz.html)
+   ============================ */
 
 .main_kalendarz{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    margin-right: auto;
-    margin-left: auto;
-    width: 50%;
+    margin: 0 auto;
+    width: min(500px, 90%);
+    min-height: 100vh;
+    min-height: 100dvh;
     text-align: center;
-    
-}
-
-.main_kalendarz input{
-    width: 30%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.main_kalendarz button{
-    width: 40%;
-    margin-right: auto;
-    margin-left: auto;
+    gap: 20px;
 }
 
 .main_kalendarz h1{
-    margin-top: 200px;
-    margin-bottom: 50px;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    margin-bottom: 10px;
 }
 
+.main_kalendarz input{
+    width: 100%;
+    max-width: 280px;
+}
+
+.main_kalendarz button{
+    width: 100%;
+    max-width: 280px;
+    padding: 10px 0;
+    cursor: pointer;
+}
 
 .data, #confirmDate{
     border-radius: 8px;
     border: 1px solid pink;
-    padding: 5px;
+    padding: 8px;
+    font-size: 16px;
+    font-family: inherit;
 }
 
 #confirmDate{
     background: rgba(255, 255, 255, 0.623);
+    border: 1px solid grey;
+    transition: background-color .15s ease;
 }
 
+#confirmDate:hover{
+    background: #fff0fa;
+}
 
 
 @keyframes waveColor {
     0% {
-      color: rgb(186, 134, 255);
       background-position: 100% 0;
     }
     50% {
-      color: #ff6464; /* Kolor w połowie animacji, np. pomarańczowy */
       background-position: 0 0;
     }
     100% {
-      color: #ff94ed; /* Końcowy kolor, np. morski */
       background-position: 100% 0;
     }
   }
-  
-/* Dostosowanie do ekranów mniejszych niż 768px */
+
+/* ============================
+   RESPONSYWNOŚĆ - telefony
+   ============================ */
 @media (max-width: 768px) {
-    .main {
-        height: auto; /* Elastyczna wysokość */
-        padding: 20px;
-        flex-direction: column;
+
+    .deco{
+        height: clamp(80px, 16vh, 150px);
+        max-width: 40vw;
     }
 
-    .main h1 {
-        font-size: 1.5em; /* Mniejsza czcionka */
-        margin-top: 10px;
-    }
-
-    #catflower, #catflower1, #catsweating {
-        position: static; /* Usuń absolutne pozycjonowanie na małych ekranach */
-        margin: 10px auto; /* Wycentrowanie */
-        max-width: 90%; /* Dopasowanie obrazków do ekranu */
-        height: auto;
+    .deco_center{
+        height: clamp(70px, 13vh, 130px);
     }
 
     .button_pierwszy {
-        width: 80%; /* Zmniejsz szerokość przycisku */
+        width: 80%;
+        max-width: 220px;
         font-size: 18px;
     }
 
     .photo_gallery {
-        width: 100%; /* Galeria zdjęć w pełnej szerokości */
-        gap: 20px; /* Mniejszy odstęp */
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 16px;
+        margin-top: 30px;
     }
 
-    .photo_gallery div {
-        flex: 1 1 45%; /* Elementy w dwóch kolumnach */
+    .photo_gallery img{
+        height: 140px;
     }
 }
 
-/* Dostosowanie do ekranów mniejszych niż 480px */
+/* Bardzo niskie ekrany (telefon poziomo) - chowamy dekorację, zostawiamy treść */
+@media (max-height: 480px) {
+    .deco{
+        display: none;
+    }
+}
+
 @media (max-width: 480px) {
     .main h1 {
-        font-size: 1.2em; /* Jeszcze mniejsza czcionka */
+        font-size: 1.3rem;
     }
 
     .button_pierwszy {
-        font-size: 16px; /* Dostosowanie tekstu przycisku */
-    }
-
-    #catflower, #catflower1, #catsweating {
-        max-width: 100%;
+        font-size: 16px;
     }
 }
